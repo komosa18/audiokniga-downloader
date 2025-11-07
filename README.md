@@ -12,7 +12,7 @@
 
 ## Установка из GitHub
 
-1. Скачайте 
+1. Скачайте [audiokniga-downloader-v1.0.0.zip]([ссылка](https://github.com/komosa18/audiokniga-downloader/archive/refs/heads/main.zip))
 2. Распакуйте архив
 3. Откройте Chrome и перейдите в `chrome://extensions/`
 4. Включите "Режим разработчика" (справа вверху)
@@ -29,5 +29,6 @@
 ## Поддержка
 
 По вопросам и предложениям: info@audiokniga.one
+
 
 
