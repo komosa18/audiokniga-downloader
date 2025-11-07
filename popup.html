@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioKniga Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Заголовок -->
+    <div class="header">
+      <div class="logo">🎧 AudioKniga Downloader</div>
+    </div>
+
+    <!-- Статус авторизации -->
+    <div class="auth-status" id="authStatus">
+      <div class="auth-indicator" id="authIndicator"></div>
+      <span id="authText">Проверка авторизации...</span>
+    </div>
+
+    <!-- Контент: не на странице аудиокниги -->
+    <div class="not-audiobook" id="notAudiobook" style="display: none;">
+      <div class="icon">📚</div>
+      <p>Откройте страницу аудиокниги на audiokniga.one</p>
+    </div>
+
+    <!-- Контент: не авторизован -->
+<div class="not-authorized" id="notAuthorized" style="display: none;">
+  <div class="icon">⚠️</div>
+  <p><strong>Требуется авторизация</strong></p>
+  <p class="small">Войдите в свой аккаунт на audiokniga.one для использования плагина</p>
+  <button class="btn btn-primary" id="loginBtn">Войти</button>
+  <button class="btn btn-secondary" id="openSiteBtn" style="margin-top: 10px;">Открыть сайт</button>
+</div>
+
+    <!-- Контент: информация об аудиокниге -->
+    <div class="audiobook-info" id="audiobookInfo" style="display: none;">
+      <!-- Обложка и основная информация -->
+      <div class="book-header">
+        <img id="bookCover" class="book-cover" src="" alt="Обложка">
+        <div class="book-details">
+          <h2 id="bookTitle">Загрузка...</h2>
+          <div class="book-meta">
+            <div class="meta-item">
+              <span class="icon">✍️</span>
+              <span id="bookAuthor">—</span>
+            </div>
+            <div class="meta-item">
+              <span class="icon">🎙️</span>
+              <span id="bookReader">—</span>
+            </div>
+            <div class="meta-item">
+              <span class="icon">⏱️</span>
+              <span id="bookDuration">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div class="actions">
+        <button class="btn btn-primary btn-full" id="downloadAllBtn">
+          <span class="icon">📥</span>
+          <span>Скачать всю книгу (<span id="chaptersCount">0</span> глав)</span>
+        </button>
+        
+        <div class="actions-row">
+          <button class="btn btn-secondary btn-chapters" id="toggleChaptersBtn">
+            <span class="icon">📋</span>
+            <span>Список глав</span>
+          </button>
+          <div class="chapters-info">
+            <span id="chaptersTotal">0 глав</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Прогресс скачивания -->
+      <div class="download-progress" id="downloadProgress" style="display: none;">
+        <div class="progress-header">
+          <span>Скачивание...</span>
+          <span id="progressText">0 / 0</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-info">
+          <span id="progressStatus">Подготовка...</span>
+        </div>
+      </div>
+
+      <!-- Список глав -->
+      <div class="chapters-section" id="chaptersSection" style="display: none;">
+        <div class="chapters-controls">
+          <input type="text" id="chaptersSearch" placeholder="🔍 Поиск по главам...">
+          <button class="btn-close" id="closeChaptersBtn" title="Закрыть">✕</button>
+        </div>
+        
+        <div class="chapters-list" id="chaptersList">
+          <!-- Главы будут добавлены динамически -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно с ошибкой -->
+    <div class="modal" id="errorModal" style="display: none;">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-icon">⚠️</span>
+          <h3>Ошибка скачивания</h3>
+        </div>
+        <div class="modal-body" id="errorMessage">
+          Произошла ошибка при скачивании файла
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="closeErrorBtn">Понятно</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
