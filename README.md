@@ -24,9 +24,10 @@
 
 ## Требования
 - Авторизация на audiokniga.one
-- Google Chrome / Microsoft Edge / Opera
+- Google Chrome / Microsoft Edge / Opera / Яндекс Браузер
 
 ## Поддержка
 
 По вопросам и предложениям: info@audiokniga.one
+
 
